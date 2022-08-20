@@ -32,11 +32,10 @@ export default function WordCard(props){
             if(state.guess == state.word){
                 setState({...state, completed: true})
                 alert('yeah!')
-                setState({...state, completed: true})
             }else{
-                    alert('Reset, Next attempt')
-                    setState({...state, guess: '', attempt: state.attempt + 1})
-                    setCharSelect([])
+                alert('Reset, Next attempt')
+                setState({...state, guess: '', attempt: state.attempt + 1})
+                setCharSelect([])
             }
         }
         const clearWord = () => {
@@ -61,6 +60,9 @@ export default function WordCard(props){
                     <CharacterCard value = {c} key = {i} />
                 )
             }
+            <div className='button'>
+                <button onClick={checkWord}>Check</button>
+            </div>
         </div>
     ) 
 }

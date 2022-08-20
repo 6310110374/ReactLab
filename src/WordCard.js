@@ -61,6 +61,7 @@ export default function WordCard(props){
                 )
             }
             <div className='button'>
+                <p></p>
                 <button onClick={checkWord}>Check</button>
             </div>
         </div>

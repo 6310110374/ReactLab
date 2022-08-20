@@ -25,17 +25,24 @@ export default function WordCard(props){
 
         let guess = state.guess + c
         setState({...state, guess})
+        setCharSelect([...charSelect, c])
 
-        if(guess.length == state.word.length){
-            if(guess == state.word){
-                console.log('yeah!')
+    }
+        const checkWord = () => {
+            if(state.guess == state.word){
+                setState({...state, completed: true})
+                alert('yeah!')
                 setState({...state, completed: true})
             }else{
-                console.log('reset,next attempt')
-                setState({...state, guess: '', attempt: state.attempt + 1})
+                    alert('Reset, Next attempt')
+                    setState({...state, guess: '', attempt: state.attempt + 1})
+                    setCharSelect([])
             }
         }
-    }
+        const clearWord = () => {
+            setState({...state, guess: '', attempt: state.attempt + 1})
+            setCharSelect([])
+        }
 
     return (
         <div> 
@@ -49,6 +56,11 @@ export default function WordCard(props){
             <div>
                 <div className='text_head'> YOUR WORD </div>
             </div> 
+            {
+                charSelect.map((c, i) =>
+                    <CharacterCard value = {c} key = {i} />
+                )
+            }
         </div>
     ) 
-} 
+}

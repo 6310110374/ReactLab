@@ -18,6 +18,7 @@ const prepareStateFromWord = given_word => {
 export default function WordCard(props){
     
     const [state, setState] = useState(prepareStateFromWord(props.value))
+    const [charSelect, setCharSelect ] = useState([])
 
     const activationHandler = c => {
         console.log(`${c} has been activeted`)
@@ -37,12 +38,17 @@ export default function WordCard(props){
     }
 
     return (
-        <div>
-            {
-                state.chars.map((c, i)=> 
-                    <CharacterCard value ={c} key = {i} activationHandler = {activationHandler} attempt={state.attempt}/>
-                )
-            }
+        <div> 
+            <div>
+                {
+                    state.chars.map((c, i)=> 
+                        <CharacterCard value ={c} key = {i} activationHandler = {activationHandler} attempt={state.attempt}/>
+                    )
+                }
+            </div>
+            <div>
+                <div className='text_head'> YOUR WORD </div>
+            </div> 
         </div>
     ) 
 } 
